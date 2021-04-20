@@ -45,10 +45,13 @@
 
 | Column  | Type       | Options           |
 | ------- | ---------- | ----------------- |
-| user_id | references | foreign_key: true |
-| item_id | references | foreign_key: true |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 ### Association
+
+- belongs_to :user
+- belongs_to :item
 - has_one :buyer
 
 
@@ -56,7 +59,7 @@
 
 | Column      | Type       | Options           |
 | ----------- | ---------- | ----------------- |
-| purchase_id | references | foreign_key: true |
+| purchase    | references | foreign_key: true |
 | postal_code | string     | null: false       |
 | area_id     | integer    | null: false       |
 | city        | string     | null: false       |
