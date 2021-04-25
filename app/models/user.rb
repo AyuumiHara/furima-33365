@@ -9,12 +9,12 @@ class User < ApplicationRecord
 
   #バリデーション修正-20210424
   with_options presence: true do
-    validates: nickname
-    validates: last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
-    validates: first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
-    validates: last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}
-    validates: first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}
-    validates: birth_day
+    validates :nickname
+    validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}
+    validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}
+    validates :birth_day
   end
 
 end
