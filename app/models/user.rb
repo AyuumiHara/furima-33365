@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  VALID_PASSWORD_REGEX = (/[a-z\d]{8,}/i)
+  VALID_PASSWORD_REGEX = (/[a-z\d]{6,}/i)
     validates :password, format: { with: VALID_PASSWORD_REGEX }
+
+  #validates :email, uniqueness: true
 
   #バリデーション修正-20210424
   with_options presence: true do
