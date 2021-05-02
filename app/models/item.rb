@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :condition
   belongs_to :shipping_fee
   belongs_to :area
-  belongs_to :shipping_days
+  belongs_to :shipping_day
 
   #空の投稿ができないようにする
   validates :image, :item_name, :item_text, presence: true
@@ -23,6 +23,6 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :shipping_fee_id
     validates :area_id
-    validates :shipping_days_id
+    validates :shipping_day_id
   end
 end

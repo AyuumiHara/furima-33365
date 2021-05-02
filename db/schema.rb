@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_013541) do
     t.integer "condition_id", null: false
     t.integer "shipping_fee_id", null: false
     t.integer "area_id", null: false
-    t.integer "shipping_days_id", null: false
+    t.integer "shipping_day_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
