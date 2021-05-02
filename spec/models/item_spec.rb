@@ -36,12 +36,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it '価格が300円以下の場合は出品できない' do
-        @item.price = '200'
+        @item.price = 200
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
       it '価格が100万円以上の場合は出品できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
@@ -85,29 +85,36 @@ RSpec.describe Item, type: :model do
 
       # ▼選択肢のテスト-選択肢1「--」を選んだ場合
       it 'カテゴリー1選択だとNG' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it '商品の状態1選択だとNG' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition must be other than 1")
       end
       it '配送料の負担1選択だとNG' do
-        @item.shipping_fee_id = '1'
+        @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee must be other than 1")
       end
       it '発送元の地域1選択だとNG' do
-        @item.area_id = '1'
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it '発送までの日数1選択だとNG' do
-        @item.shipping_day_id = '1'
+        @item.shipping_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day must be other than 1")
+      end
+
+      #商品とユーザが紐付いていない場合登録できない
+      it 'userと紐づいていないと登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
