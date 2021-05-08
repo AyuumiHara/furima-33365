@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :update]
   before_action :set_item, only: [:edit, :show]
 
+
   def index
     @items = Item.order("created_at DESC")
   end
@@ -33,6 +34,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+
   end
 
   def destroy
