@@ -32,9 +32,9 @@
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% else %>
-      <%= link_to "購入画面に進む", item_path(@item.id) ,class:"item-red-btn"%>
+    <%= link_to "購入画面に進む", item_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
-    <% end %> 
+    <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 
@@ -106,7 +106,9 @@
       後ろの商品 ＞
     </a>
   </div>
+  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
+  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
