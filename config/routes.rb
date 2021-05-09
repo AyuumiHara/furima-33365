@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   resources :items
-  delete 'items/:id' => 'items#destroy'
 
 end
