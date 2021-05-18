@@ -15,6 +15,10 @@ RSpec.describe OrderBuyer, type: :model do
       it '必須項目とtokenがあれば購入できる' do
         expect(@order_buyer).to be_valid
       end
+      it '建物名がなくても保存できること' do
+        @order_buyer.building_name = ''
+        expect(@order_buyer).to be_valid
+      end
     end
 
   # 商品購入ができないときについてのテストコード
@@ -44,25 +48,10 @@ RSpec.describe OrderBuyer, type: :model do
         @order_buyer.valid?
         expect(@order_buyer.errors.full_messages).to include("Area Select")
       end
-      # ▼選択肢のテスト-未選択の場合
-      # it '都道府県を選択肢1だとNG' do
-        # @order_buyer.area_id = 1
-        # @order_buyer.valid?
-        # expect(@order_buyer.errors.full_messages).to include("Area must be other than 1")
-      # end
       it 'cityが空だと購入不可' do
         @order_buyer.city = ''
         @order_buyer.valid?
         expect(@order_buyer.errors.full_messages).to include("City can't be blank")
-      end
-      # it 'house_numberが空だと購入不可' do
-        # @order_buyer.house_number = ''
-        # @order_buyer.valid?
-        # expect(@order_buyer.errors.full_messages).to include("House number can't be blank")
-      # end
-      it '建物名がなくても保存できること' do
-        @order_buyer.building_name = ''
-        expect(@order_buyer).to be_valid
       end
       it '電話番号が空だと購入不可' do
         @order_buyer.phone_number = ''

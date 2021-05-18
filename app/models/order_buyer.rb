@@ -13,10 +13,7 @@ class OrderBuyer
     validates :token
   end
 
-  # データをテーブルに保存する処理
   def save
-    # ユーザーの情報を保存し、「user」という変数に入れている
-    # user = User.create
     order = Order.create(item_id: item_id, user_id: user_id)
     Buyer.create(postal_code: postal_code, area_id: area_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
   end

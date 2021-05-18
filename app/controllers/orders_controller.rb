@@ -5,17 +5,9 @@ class OrdersController < ApplicationController
 
   def index
     @order_buyer = OrderBuyer.new
-    if current_user == @item.user
-      redirect_to root_path
-    end
-  end
-
-  def new
-    # @order_buyer = OrderBuyer.new
   end
 
   def create
-    # binding.pry
     @order_buyer = OrderBuyer.new(buyer_params)
     if @order_buyer.valid?
       pay_item
