@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 
 
@@ -37,11 +37,13 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 
 
 
 ##  purchases テーブル
+<!-- ↓名前の変更 2021-05-14 -->
+##  orders テーブル
 
 | Column  | Type       | Options           |
 | ------- | ---------- | ----------------- |
@@ -69,4 +71,4 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
