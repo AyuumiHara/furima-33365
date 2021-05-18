@@ -18,4 +18,9 @@ ja:
         shipping_fee_id: 配送料の負担
         area_id: 発送元の地域
         shipping_day_id: 発送までの日数
-        
+      order_buyer:
+        postal_code: 郵便番号
+        area: 都道府県
+        city: 市町村
+        price: 価格
+        Phone_number: 電話番号
