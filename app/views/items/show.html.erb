@@ -14,7 +14,7 @@
         <span>Sold Out!!</span>
       </div>
       <% end %>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -32,12 +32,10 @@
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
 
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% else %>
     <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
     <% end %>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
@@ -108,9 +106,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
