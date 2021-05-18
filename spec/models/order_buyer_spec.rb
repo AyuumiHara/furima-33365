@@ -37,7 +37,7 @@ RSpec.describe OrderBuyer, type: :model do
       it '郵便番号の半角のハイフンがない' do
         @order_buyer.postal_code = '1234567'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@order_buyer.errors.full_messages).to include("Postal code Input correctly")
       end
       it '都道府県を未選択だとNG' do
         @order_buyer.area_id = 0
@@ -72,7 +72,7 @@ RSpec.describe OrderBuyer, type: :model do
       it '電話番号に数字以外が含まれると購入不可' do
         @order_buyer.phone_number = 'rakuten08012345678'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_buyer.errors.full_messages).to include("Phone number Input only number")
       end
       it "tokenが空では登録できないこと" do
         @order_buyer.token = nil

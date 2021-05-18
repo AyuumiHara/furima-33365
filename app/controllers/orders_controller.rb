@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!, only: [:index, :create]
-  # before_action :move_to_root_path, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_root_path, only: [:index, :create]
 
   def index
     @order_buyer = OrderBuyer.new
+    if current_user == @item.user
+      redirect_to root_path
+    end
   end
 
   def new
@@ -43,8 +46,8 @@ class OrdersController < ApplicationController
     )
   end
 
-  # def move_to_root_path
-  #   redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
-  # end
+  def move_to_root_path
+    redirect_to root_path if current_user.id == @item.user_id || @item.order.present?
+  end
 
 end
