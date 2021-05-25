@@ -36,17 +36,19 @@ RSpec.describe OrderBuyer, type: :model do
       it '郵便番号が空だと購入不可' do
         @order_buyer.postal_code = ''
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Postal code can't be blank")
+        # expect(@order_buyer.errors.full_messages).to include("Postal code can't be blank")
+        expect(@order_buyer.errors.full_messages).to include("Postal code を入力してください")
       end
       it '郵便番号の半角のハイフンがない' do
         @order_buyer.postal_code = '1234567'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Postal code Input correctly")
+        # expect(@order_buyer.errors.full_messages).to include("Postal code Input correctly")
+        expect(@order_buyer.errors.full_messages).to include("Postal code を入力してください")
       end
       it '都道府県を未選択だとNG' do
-        @order_buyer.area_id = 0
+        @order_buyer.area_id = ''
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Area Select")
+        expect(@order_buyer.errors.full_messages).to include("Area を選択してください")
       end
       it 'cityが空だと購入不可' do
         @order_buyer.city = ''
@@ -61,12 +63,14 @@ RSpec.describe OrderBuyer, type: :model do
       it '電話番号が12桁以上だと購入不可' do
         @order_buyer.phone_number = '1234567890123'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Phone number Input only number")
+        # expect(@order_buyer.errors.full_messages).to include("Phone number Input only number")
+        expect(@order_buyer.errors.full_messages).to include("Phone number を入力してください")
       end
       it '電話番号に数字以外が含まれると購入不可' do
         @order_buyer.phone_number = 'rakuten08012345678'
         @order_buyer.valid?
-        expect(@order_buyer.errors.full_messages).to include("Phone number Input only number")
+        # expect(@order_buyer.errors.full_messages).to include("Phone number Input only number")
+        expect(@order_buyer.errors.full_messages).to include("Phone number を入力してください")
       end
       it "tokenが空では登録できないこと" do
         @order_buyer.token = nil
